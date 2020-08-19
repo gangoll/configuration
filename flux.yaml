@@ -1,0 +1,19 @@
+piVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: dev-app
+  namespace: dev
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:dev-*
+spec:
+  releaseName: podinfo-dev
+  chart:
+    git: git@github.com:gangoll/echo-final.git
+    path: /
+    ref: master
+  values:
+    image:
+      repository: gangoll/gangoll/dev-first_commit:latest
+      tag: dev-kb9lm91e
+    replicaCount: 1

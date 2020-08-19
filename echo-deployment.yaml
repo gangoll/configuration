@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo
+  labels:
+     app: echo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo
+  template:
+    metadata:
+      labels:
+        app: echo
+    spec:
+      containers:
+      - name: echo-con
+        image: gcr.io/propane-avatar-285910/echo1:v1
+        ports:
+        - containerPort: 3000
+      
